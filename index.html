@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Unity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/socialWork.css">
+    <style>
+      .chatWithme{
+          display: inline-block;
+          position: fixed;
+          top: 600px;
+          left: 1400px;
+      }
+
+      .formChanger{
+        position: relative;left: 80%;
+      }
+
+      .hindiQuote{
+        color: white;
+        font-size: 1.5cm;
+        position: absolute;
+        top: 450px;
+        left:3%;
+      }
+      #chatBox{
+        width: 300px;
+        height: 500px;
+        background-color: rgba(3, 6, 32, 0.596);
+        border:2px solid white;
+        border-radius: 4%;
+        position: fixed;
+        top: 180px;
+        left: 1200px;
+        z-index: 10;
+        display: none;
+        flex-direction: column;
+        overflow: scroll;
+      }
+      .closeMe:hover{
+        color: rgba(255, 0, 0, 0.692);
+        cursor:pointer;
+      }
+
+      .socialBot{
+        width: 90%;
+        height: 40px;
+        border-radius: 2%;
+        border:2px solid gray;
+        color: white;
+        margin-left: 7px;
+        padding-left: 3px;
+      }
+
+      .botButton{
+        border-radius: 30px;
+        width: 60%;
+        margin-left:5px;
+      }
+      #mainTextHeading{
+        font-size: 4rem;
+
+        position: relative;
+        top: 40px;
+        color: rgba(19, 15, 15, 0.534);
+        font-weight: bolder;
+        font-family:"Poppins",sans-serif;
+        -webkit-text-stroke: 0.1rem 	#4deeea;
+
+      }
+
+      #mainTextHeading::before{
+        content: attr(data-text);
+        color: 	#4deeea;
+        position: absolute;
+        top: 0;
+        /* left: 0; */
+        border-right:0.3rem solid 	#4deeea ;
+        height: 100%;
+        width: 0%;
+        overflow: hidden;
+        animation: UnityTextAnim 2s infinite;
+        text-align: left;
+        box-shadow: 0px 0px 10px #4dceee,0px 0px 10px #4dceee,0px 0px 80px #4dceee
+
+      }
+      @keyframes UnityTextAnim {
+        0%{
+          width: 0%;
+        }
+        85%{
+          width: 14%;
+        }
+      }
+
+      @media (max-width:700px) {
+          .chatWithme{
+              display: none;
+          }
+          .formChanger{
+            position: relative;
+            left: 0;
+      }
+      .hindiQuote{
+        color: white;
+        font-size: 7mm;
+        position: absolute;
+        top: 450px;
+        left:3%;
+      }
+      @keyframes UnityTextAnim {
+        0%{
+          width: 0%;
+        }
+        85%{
+          width: 60%;
+        }
+      }
+
+      }
+  </style>
+</head>
+<body class="bg-dark">
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark me-auto ">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand text-light" href="#">Navbar</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="filter: invert(100%);"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  text-light" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  text-light" href="#" onclick="OpenDonation()">Donation(₹10 only)</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-light" href="#" onclick="chatWithME()">Chat</a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" id="contactJS" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contact
+              </a>
+              <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <li class="bg-dark"><a class="dropdown-item text-white bg-dark" href="https://www.instagram.com/socialworkunity/"><pre><img src="images/instaLogo.jpg" style="width: 20px;height: 20px;" alt="InstagramIcon"> Instagram</pre></a></li>
+                <li class="bg-dark"><a class="dropdown-item text-white bg-dark" href="https://www.facebook.com/unitysocialwork/"><pre><img src="images/faccebooklogo.png" style="width: 20px;height: 20px;" alt="facebookIcon"> Facebook</pre></a></li>
+                <li class="bg-dark"><a class="dropdown-item text-white bg-dark" href="mailto:unitysocialwork@gmail.com"><pre><img src="images/gmailLogo.png" style="width: 20px;height: 20px;" alt="facebookIcon"> Contact Us(GMAIL)</pre></a></li>
+                <li class="bg-dark"><a class="dropdown-item text-white bg-dark" href="https://paurushjoshi.github.io/home"><pre><img src="images/detective.png" style="width: 20px;height: 20px;" alt="facebookIcon"> Adiviser</a></pre></a></li>
+                
+              </ul>
+            </li>
+
+            <li class="nav-item ">
+              <a class="nav-link me-auto text-light" href="#" title="Coming Soon" onclick="Maintanace()" style="opacity: 0.5;">Register/Login</a>
+            </li>          
+            <form class="d-flex me-auto justify-content-end formChanger">
+              <input class="form-control me-2 me-auto" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-success me-auto"  type="submit">Search</button>
+            </form>
+        </div>
+      </div>
+    </nav>
+<!-- DOnation Window -->
+    
+<!--  -->
+    <!-- CHAT ME OPTION -->
+    <div class="chatWithme" onclick="chatWithME()">
+      <img src="images/chatMe.gif" alt="" style="width: 60px;height: 65px;cursor:grab;">
+  </div>
+
+  <div id="chatBox">
+      <div style="display: flex;flex-direction: row;width: 100%;height: 1cm;">
+        <a id="closeMe" href="#" onclick="closeMe()" style="text-decoration: none;color: white;width: 1cm;height: 7mm;background-color: rgb(235, 9, 9);position: fixed;left: 1440px;"><center>X</center>
+        </a>
+        
+      </div>
+      <div style="display: flex;flex-direction: column;justify-content: center;">
+        <p class="socialBot">Hello , I am Social Unity Bot</p>
+        <p class="socialBot">How can i help you?</p>
+      </div>
+      <div style="display: flex;flex-direction: column;justify-content: center;">
+        <button class="btn-primary botButton" onclick="sayHello()">I Just wanted to say Hello</button>
+        <br>
+        
+        <button class="btn-primary botButton" onclick="openContact()">Want to Join Group</button>
+        <br>
+        
+      </div>
+        
+  </div>
+
+  
+
+    <!-- DIV main element -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" style="height: 555px;text-align: center;" data-bs-ride="carousel">
+      
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/newsocial.jpg" class="d-block w-100" alt="..." style="height: 555px;">
+        </div>
+        <center>
+          <h1 id="mainTextHeading" data-text="UNITY">UNITY</h1>
+          <h2 style="color: white;font-size: 200%;position:relative;top:100px;color:white;
+          background: linear-gradient(to right, rgb(214, 1, 1),white,lightblue,darkcyan);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text; ">A GROUP OF SOCIAL WORK</h2>
+
+          <h2 class="hindiQuote" id="quoteHindi">पैसो से तो हर कोई मदद करता है, आओ दिल से मदद करके देखे.</h2>
+        </center>
+        
+      </div>
+    </div>
+
+
+    <!-- GRID PHOTOS -->
+
+    <div class="container socialBodyBack bg-dark">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12 " >
+          <img class="animatePic" src="images/MainPhotos/NP1.jpeg" style="height: 250px;width: 80%;margin: 5%;border:2px solid white; border-radius: 20px;" alt="">
+          
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP2.jpeg" style="height: 250px;width: 80%;margin: 5%;border:2px solid white; border-radius: 20px;" alt="">
+        </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP3.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP4.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP5.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP6.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP7.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP8.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP9.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP10.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP11.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 animatePic" >
+          <img src="images/MainPhotos/NP12.jpeg" style="border:2px solid white; border-radius: 20px;height: 250px;width: 80%;margin: 5%;" alt="">
+        </div>
+
+        
+      </div>
+    </div>
+
+    <!--  -->
+
+        
+    <script>
+      function chatWithME(){
+        document.getElementById("chatBox").style.display="flex"
+      }
+
+      function closeMe(){
+        document.getElementById("chatBox").style.display="none";
+      }
+
+      function sayHello(){
+        var newme=document.createElement("p")
+        newme.innerHTML="Hi, How can i help you?"
+        newme.classList.add("socialBot");
+        var newButton=document.createElement("button")
+        newButton.classList.add("botButton")
+        newButton.classList.add("btn-primary")
+        newButton.innerHTML="You Want to Join Group?";
+        
+        newButton.addEventListener("click",function(){
+          openContact();
+        });
+        
+        document.getElementById("chatBox").appendChild(newme)
+        document.getElementById("chatBox").appendChild(newButton)
+
+      }
+
+      function openContact(){
+       
+
+        var newme=document.createElement("p")
+        newme.innerHTML="You can Contact Us"
+        newme.classList.add("socialBot");
+        
+        var newme1=document.createElement("p")
+        // newme1.innerHTML='Leave a message : <a style="width:20px;height:20px" class="dropdown-item text-white bg-dark" href="https://www.instagram.com/socialworkunity/"><img src="images/instaLogo.jpg" style="width: 20px;height: 20px;" alt="InstagramIcon"></a>'
+        newme1.innerHTML="Leave a message via GMAIL: <a style='color:white;' href='mailto:unitysocialwork@gmail.com'>unitysocialwork@gmail.com</a>"
+        newme1.classList.add("socialBot");
+        newme1.style.height="80px"
+        newme1.style.backgroundColor="black";
+        newme1.style.color="White"
+
+        document.getElementById("chatBox").appendChild(newme)
+        document.getElementById("chatBox").appendChild(newme1)
+
+        // document.getElementById("contactJS").
+
+      }
+
+      var intr1=setInterval(function(){
+        var i=0;
+        var str1="पैसो से तो हर कोई मदद करता है, आओ दिल से मदद करके देखे";
+        var textnew=""
+        document.getElementById("quoteHindi").innerHTML="";
+        var inter2=setInterval(function(){
+          textnew=textnew+str1[i];
+          i++;
+          document.getElementById("quoteHindi").innerHTML=textnew+ " |";
+          if(i==54)
+            {
+              clearInterval(inter2)
+            }
+        },100)
+      },9000)
+
+      function OpenDonation()
+      {
+        alert("PAGE IS UNDER MAINTAINANCE. Contact to Adviser ( If you want to donate anything)")
+      }
+      function Maintanace(){
+        alert("Page is Under Maintainance")
+      }
+    </script>
+    <script src="js/socialWork.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+    <!-- <script src="js/socialWork.js"></script> -->
+</body>
+</html>
